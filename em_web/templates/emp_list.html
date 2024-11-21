@@ -1,0 +1,79 @@
+{% extends 'emp_base.html' %}
+
+{# 页面标题 #}
+{% block title %}
+    <title>【EmployeeManager】员工列表</title>
+{% endblock %}
+
+{# 页面主体 #}
+{% block content %}
+    <div class="container">
+        <div style="padding-top: 10px; padding-bottom: 10px">
+            <a class="btn btn-success" href="/emp_add/">
+                <span class="bi-person-add" aria-hidden="true"></span>
+                创建员工
+            </a>
+            <div style="float:right; width: 300px">
+                <form method="get">
+                    <div class="input-group">
+                        <label for="search"></label>
+                        <input id="search" name="search" type="text" value="{{ search_data }}" placeholder="请输入员工姓名">
+                        <span class="">
+                            <button>
+                                <span class="bi-search" aria-hidden="true"></span>
+                            </button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <div class="panel-heading">
+                <span class="bi bi-grid-3x3-gap-fill" aria-hidden="true"></span>
+                员工列表
+            </div>
+            <table class="table table-striped table-hover table-bordered">
+                <thead>
+                <tr>
+                    <th>员工ID</th>
+                    <th>员工姓名</th>
+                    <th>员工密码</th>
+                    <th>员工年龄</th>
+                    <th>账户余额</th>
+                    <th>入职时间</th>
+                    <th>员工性别</th>
+                    <th>所属部门</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+               {% for foo in emp_queryset %}
+                    <tr>
+                        <td class="align-content-center">{{ foo.id }}</td>
+                        <td class="align-content-center">{{ foo.name }}</td>
+                        <td class="align-content-center">{{ foo.password }}</td>
+                        <td class="align-content-center">{{ foo.age }}</td>
+                        <td class="align-content-center">{{ foo.account }}</td>
+                        <td class="align-content-center">{{ foo.create_time }}</td>
+                        <td class="align-content-center">{{ foo.gender }}</td>
+                        <td class="align-content-center">{{ foo.dep.dep_name }}</td>
+                        <td class="align-content-center">
+                            <a class="btn btn-success" href="#">编辑</a>
+                            <a class="btn btn-danger" href="/emp_del/?emp_del_id={{ foo.id }}">删除</a>
+                        </td>
+                    </tr>
+               {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <ul class="pagination">
+              <li class="page-item"><a class="page-link" href="#">上一页</a></li>
+              <li class="page-item"><a class="page-link" href="?page=1">1</a></li>
+              <li class="page-item"><a class="page-link" href="?page=2">2</a></li>
+              <li class="page-item"><a class="page-link" href="?page=3">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">下一页</a></li>
+        </ul>
+    </div>
+{% endblock %}

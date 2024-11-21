@@ -1,0 +1,33 @@
+{% extends 'dep_base.html' %}
+
+{% block title %}
+    <title>部门编辑</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    <span class="bi-collection" aria-hidden="true"></span>
+                    部门编辑
+                </h4>
+            </div>
+            <div class="card-body">
+                <form class="form-horizontal" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="dep_name" class="form-label">部门名称</label>
+                        <input type="hidden" name="new_dep_id" value="{{ default_dep.id }}">
+                        <input type="text" class="form-control" id="dep_name" name="new_dep_name" value="{{ default_dep.dep_name }}" placeholder="请输入部门名称">
+                    </div>
+                    <div class="">
+                        <div class="">
+                            <button type="submit" class="btn btn-success">添 加</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

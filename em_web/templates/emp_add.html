@@ -1,0 +1,35 @@
+{% extends 'emp_base.html' %}
+
+{# 页面标题 #}
+{% block title %}
+    <title>员工新建</title>
+{% endblock %}
+
+{# 页面主体 #}
+{% block content %}
+    <div class="container" style="padding-top: 10px">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    <span class="bi-person-add" aria-hidden="true"></span>
+                    创建员工
+                </h4>
+            </div>
+            <div class="card-body">
+                <form method="post" class="" novalidate>
+                    {% csrf_token %}
+                        {% for field in form %}
+                            <div class="">
+                                <label for="emp_name" class="form-label">
+                                    {{ field.label_tag }}
+                                </label>
+                                {{ field }}
+                                {{ field.errors.0 }}
+                            </div>
+                        {% endfor %}
+                    <button type="submit" class="btn btn-success">提交</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends 'dep_base.html' %}
+
+{% block title %}
+    <title>新建部门</title>
+{% endblock %}
+
+{% block content %}
+    <!-- 主体部分 -->
+    <div class="container" style="padding-top: 10px">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">
+                    <span class="bi-database-add" aria-hidden="true"></span>
+                    部门添加
+                </h4>
+            </div>
+            <div class="card-body">
+                <form class="" method="post">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="dep_name" class="form-label">部门名称</label>
+                        <input type="text" class="form-control" id="dep_name" name="dep_name" placeholder="请输入部门名称 Please Input DepartmentName">
+                    </div>
+                    <div class="">
+                        <div>
+                            <button type="submit" class="btn btn-success">添 加</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

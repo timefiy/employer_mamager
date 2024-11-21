@@ -1,0 +1,44 @@
+{% extends 'dep_base.html' %}
+
+{% block title %}
+    <title>部门列表</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div style="padding-top: 10px; padding-bottom: 10px;">
+            <a class="btn btn-success" href="/dep_add/">
+                <!-- 新建页面跳转 -->
+                <span class="bi bi-database-fill-add" aria-hidden="true"></span>
+                新建部门
+            </a>
+        </div>
+        <div class="">
+                <div class="">
+                    <span class="bi bi-grid-3x3-gap-fill" aria-hidden="true"></span>
+                    部门列表
+                </div>
+                <table class="table table-striped table-hover table-bordered">
+                    <thead>
+                    <tr>
+                        <th>部门ID</th>
+                        <th>部门名称</th>
+                        <th>操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for foo in dep_queryset %}
+                        <tr>
+                            <td class="align-content-center">{{ foo.id }}</td>
+                            <td class="align-content-center">{{ foo.dep_name }}</td>
+                            <td>
+                                <a class="btn btn-success" href="/dep_update/?update_id={{ foo.id }}">编辑</a>
+                                <a class="btn btn-danger" href="/dep_del/?del_id={{ foo.id }}">删除</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+        </div>
+    </div>
+{% endblock %}
